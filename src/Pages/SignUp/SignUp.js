@@ -8,7 +8,7 @@ const SignUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const {
     register,
-    formState: { error },
+    formState: { erro },
     handleSubmit,
   } = useForm();
 
@@ -75,7 +75,7 @@ const SignUp = () => {
                 Please Register
               </h1>
               <form onSubmit={handleSubmit(handleSignup)}>
-                <div className="mb-6">
+                <div className="mb-4">
                   <label
                     className=" flex justify-start text-lg mb-2"
                     htmlFor="name"
@@ -89,7 +89,7 @@ const SignUp = () => {
                     placeholder="Your Name"
                   />
                 </div>
-                <div className="mb-6">
+                <div className="mb-4">
                   <label
                     className=" flex justify-start text-lg mb-2"
                     htmlFor="email"
@@ -121,7 +121,7 @@ const SignUp = () => {
                   <option value="buyer">Buyer</option>
                   <option value="seller">Seller</option>
                 </select>
-                <div className="mb-3">
+                <div className="mb-6">
                   <label
                     className=" flex justify-start text-lg mb-2"
                     htmlFor="password"
@@ -134,14 +134,6 @@ const SignUp = () => {
                     className="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
                   />
-                </div>
-                <div className="flex justify-end mb-2">
-                  <a
-                    href="#/"
-                    className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                  >
-                    Forgot password?
-                  </a>
                 </div>
                 <button
                   type="submit"
