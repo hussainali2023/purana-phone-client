@@ -1,9 +1,14 @@
-import React from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+  const { signInUser, googleLogin } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
   const {
     register,
     formState: { error },
@@ -11,7 +16,31 @@ const Login = () => {
   } = useForm();
 
   const handleLogin = (data) => {
-    console.log(data);
+    setLoginError("");
+    signInUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully Login");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    googleLogin(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully Login");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
   };
 
   return (
@@ -30,6 +59,9 @@ const Login = () => {
               <h1 className=" text-center text-blue-700 font-bold text-3xl mb-6">
                 Please Login
               </h1>
+              <p className="text-center text-red-700 font-semibold ">
+                {loginError}
+              </p>
               <form onSubmit={handleSubmit(handleLogin)}>
                 <div className="mb-6">
                   <label
@@ -91,11 +123,13 @@ const Login = () => {
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>
                 </div>
-
-                <button className=" text-white flex justify-center align-middle w-full bg-blue-700 py-2 rounded font-medium">
-                  Login With Google
-                </button>
               </form>
+              <button
+                onClick={handleGoogleLogin}
+                className=" text-white flex justify-center align-middle w-full bg-blue-700 py-2 rounded font-medium"
+              >
+                Login With Google
+              </button>
             </div>
           </div>
         </div>
