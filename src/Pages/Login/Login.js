@@ -2,7 +2,6 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
@@ -30,11 +29,29 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
+    setLoginError("");
     const provider = new GoogleAuthProvider();
     googleLogin(provider)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        const userData = {
+          name: user.displayName,
+          email: user.email,
+          role: "buyer",
+        };
+
+        fetch("http://localhost:5000/adduser", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         toast.success("Successfully Login");
       })
       .catch((error) => {

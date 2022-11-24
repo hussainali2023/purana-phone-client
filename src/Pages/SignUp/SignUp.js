@@ -14,7 +14,7 @@ const SignUp = () => {
 
   const handleSignup = (data) => {
     // console.log(data);
-    console.log(data.email, data.password);
+    console.log(data.email, data.password, data.role);
     createUser(data.email, data.password)
       .then((userCredential) => {
         // Signed in
@@ -26,6 +26,7 @@ const SignUp = () => {
         updateUser(userInfo)
           .then(() => {
             toast.success("Registration Successfull");
+            saveUsersInDatabase(data.name, data.email, data.role);
           })
           .catch((err) => {
             console.log(err);
@@ -41,9 +42,25 @@ const SignUp = () => {
       });
   };
 
+  const saveUsersInDatabase = (name, email, role) => {
+    const user = { name: name, email: email, role: role };
+    console.log(user);
+    fetch("http://localhost:5000/adduser", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
-    <div className=" mb-80 lg:mb-24">
-      <section className="h-screen">
+    <div>
+      <section>
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
@@ -68,7 +85,6 @@ const SignUp = () => {
                   <input
                     type="text"
                     {...register("name", { required: "Name is Required" })}
-                    name="name"
                     className="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Your Name"
                   />
@@ -85,7 +101,6 @@ const SignUp = () => {
                     {...register("email", {
                       required: "Email Address is required",
                     })}
-                    name="email"
                     className="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Email address"
                   />
@@ -97,8 +112,7 @@ const SignUp = () => {
                   What type of User You are ?
                 </label>
                 <select
-                  name="typeOfUser"
-                  {...register("typeOfUser", {
+                  {...register("role", {
                     required: "Password is Required",
                   })}
                   id=""
@@ -110,14 +124,13 @@ const SignUp = () => {
                 <div className="mb-3">
                   <label
                     className=" flex justify-start text-lg mb-2"
-                    htmlFor="name"
+                    htmlFor="password"
                   >
                     Password
                   </label>
                   <input
                     type="password"
                     {...register("password")}
-                    name="password"
                     className="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
                   />
