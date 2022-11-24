@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
-  const { createUser, loading } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const {
     register,
     formState: { error },
@@ -20,7 +20,17 @@ const SignUp = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        toast.success("Registration Successfull");
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            toast.success("Registration Successfull");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
         // ...
       })
       .catch((error) => {
@@ -32,7 +42,7 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className=" mb-80 lg:mb-24">
       <section className="h-screen">
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">

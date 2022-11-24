@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut();
+  };
+
   const listItems = (
     <React.Fragment>
       <li>
@@ -11,14 +17,29 @@ const Navbar = () => {
       <li>
         <Link>Dashboard</Link>
       </li>
-      <li>
-        <Link
-          to="/login"
-          className="inline-flex items-center justify-center w-full h-12 px-6 tracking-wide text-white transition duration-200 rounded shadow-md bg-yellow-400 hover:bg-yellow-500"
-        >
-          Login
-        </Link>
-      </li>
+      {user?.uid ? (
+        <>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="inline-flex items-center justify-center w-full h-12 px-6 tracking-wide text-white transition duration-200 rounded shadow-md bg-yellow-400 hover:bg-yellow-500"
+            >
+              Logout
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link
+              to="/login"
+              className="inline-flex items-center justify-center w-full h-12 px-6 tracking-wide text-white transition duration-200 rounded shadow-md bg-yellow-400 hover:bg-yellow-500"
+            >
+              Login
+            </Link>
+          </li>
+        </>
+      )}
     </React.Fragment>
   );
   return (
