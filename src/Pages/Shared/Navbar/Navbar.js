@@ -15,7 +15,7 @@ const Navbar = () => {
         <Link
           to="/login"
           className="inline-flex items-center justify-center w-full h-12 px-6 tracking-wide text-white transition duration-200 rounded shadow-md bg-yellow-400 hover:bg-yellow-500"
-          aria-label="Logi"
+          aria-label="Login"
           title="Login"
         >
           Login
@@ -27,31 +27,13 @@ const Navbar = () => {
     <div className="bg-blue-500">
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
-          <a
-            href="/"
-            aria-label="Company"
-            title="Company"
-            className="inline-flex items-center"
-          >
-            <svg
-              className="w-8 text-teal-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
-            >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
-            <span className="ml-2 text-xl font-extrabold tracking-wide text-yellow-300 uppercase">
-              purana phone
-            </span>
-          </a>
+          <Link to="/" className="inline-flex items-center">
+            <div className="ml-2  text-xl font-extrabold tracking-wide text-yellow-300 uppercase">
+              <span className=" leading-none">Purana</span>
+              <br />
+              <span className="leading-none">Phone</span>
+            </div>
+          </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex text-white font-medium">
             {listItems}
           </ul>
