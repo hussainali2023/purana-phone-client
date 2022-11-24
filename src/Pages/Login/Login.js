@@ -32,6 +32,12 @@ const Login = () => {
               </h1>
               <form onSubmit={handleSubmit(handleLogin)}>
                 <div className="mb-6">
+                  <label
+                    className=" flex justify-start text-lg mb-2"
+                    htmlFor="email"
+                  >
+                    Password
+                  </label>
                   <input
                     type="email"
                     {...register("email")}
@@ -42,6 +48,12 @@ const Login = () => {
                 </div>
 
                 <div className="mb-3">
+                  <label
+                    className=" flex justify-start text-lg mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
                   <input
                     type="password"
                     {...register("password")}
@@ -68,6 +80,13 @@ const Login = () => {
                 >
                   Sign in
                 </button>
+                <p className=" text-start mt-2">
+                  New User?{" "}
+                  <Link className=" text-blue-700 font-medium" to="/signup">
+                    {" "}
+                    Sign Up
+                  </Link>
+                </p>
 
                 <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                   <p className="text-center font-semibold mx-4 mb-0">OR</p>

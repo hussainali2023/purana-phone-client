@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
+  const { createUser, loading } = useContext(AuthContext);
   const {
     register,
     formState: { error },
     handleSubmit,
   } = useForm();
 
-  const handleLogin = (data) => {
-    console.log(data);
+  const handleSignup = (data) => {
+    // console.log(data);
+    console.log(data.email, data.password);
+    createUser(data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        toast.success("Registration Successfull");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
   };
 
   return (
@@ -26,9 +45,9 @@ const SignUp = () => {
             </div>
             <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
               <h1 className=" text-center text-blue-700 font-bold text-3xl mb-6">
-                Please Login
+                Please Register
               </h1>
-              <form onSubmit={handleSubmit(handleLogin)}>
+              <form onSubmit={handleSubmit(handleSignup)}>
                 <div className="mb-6">
                   <label
                     className=" flex justify-start text-lg mb-2"
@@ -108,6 +127,12 @@ const SignUp = () => {
                   Sign Up
                 </button>
               </form>
+              <p className="mt-2">
+                Already Have an Account?{" "}
+                <Link to="/login" className=" text-blue-700 font-medium">
+                  Sign In
+                </Link>
+              </p>
             </div>
           </div>
         </div>

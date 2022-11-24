@@ -15,8 +15,6 @@ const Navbar = () => {
         <Link
           to="/login"
           className="inline-flex items-center justify-center w-full h-12 px-6 tracking-wide text-white transition duration-200 rounded shadow-md bg-yellow-400 hover:bg-yellow-500"
-          aria-label="Login"
-          title="Login"
         >
           Login
         </Link>
