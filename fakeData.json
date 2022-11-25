@@ -1,0 +1,77 @@
+[
+  {
+    "companyName": "Apple",
+    "category_id": "1",
+    "phoneName": "Apple iPhone 11",
+    "photo": "https://cdn.shopify.com/s/files/1/0568/5942/7015/products/MHDD3HN_A_1.jpg?v=1630473834",
+    "originalPrice": 499,
+    "salePrice": 399,
+    "usage": 1.5,
+    "location": "kolkata",
+    "sellerName": "Akash Ali",
+    "post_date": "4 Nov 2022"
+  },
+
+  {
+    "companyName": "Apple",
+    "category_id": "1",
+    "phoneName": "Apple iPhone 12 Pro Max",
+    "photo": "https://m.media-amazon.com/images/I/71fJ-gmBZtL._SL1500_.jpg",
+    "originalPrice": 1199,
+    "salePrice": 899,
+    "usage": 1,
+    "location": "Howra",
+    "sellerName": "Jhakkas Ali",
+    "post_date": "7 Nov 2022"
+  },
+  {
+    "companyName": "Samsung",
+    "category_id": "2",
+    "phoneName": "Galaxy M53",
+    "photo": "https://images.samsung.com/is/image/samsung/p6pim/in/sm-m536bzbeinu/gallery/in-galaxy-m53-5g-sm-m536-sm-m536bzbeinu-532180211?$1300_1038_PNG$",
+    "originalPrice": 399,
+    "salePrice": 299,
+    "usage": 1.5,
+    "location": "Siliguri",
+    "sellerName": "Batas Ali",
+    "post_date": "10 October 2022"
+  },
+
+  {
+    "companyName": "Galaxy A23",
+    "category_id": "2",
+    "phoneName": "Apple iPhone 12 Pro Max",
+    "photo": "https://images.samsung.com/is/image/samsung/p6pim/in/sm-a235flbtins/gallery/in-galaxy-a23-sm-a235-417874-sm-a235flbtins-531577405?$1300_1038_PNG$",
+    "originalPrice": 299,
+    "salePrice": 199,
+    "usage": 2,
+    "location": "Darjeling",
+    "sellerName": "Chalak Ali",
+    "post_date": "2 Nov 2022"
+  },
+  {
+    "companyName": "Xiaomi",
+    "category_id": "3",
+    "phoneName": "Xiaomi 11 Lite NE 5G",
+    "photo": "https://m.media-amazon.com/images/I/71XmlboxNZL._SL1500_.jpg",
+    "originalPrice": 399,
+    "salePrice": 299,
+    "usage": 1,
+    "location": "Murshidabad",
+    "sellerName": "Halak Ali",
+    "post_date": "9 Nov 2022"
+  },
+
+  {
+    "companyName": "Xiaomi",
+    "category_id": "3",
+    "phoneName": "Xiaomi 12 Pro",
+    "photo": "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1650980951.36071248.jpg",
+    "originalPrice": 899,
+    "salePrice": 699,
+    "usage": 1,
+    "location": "Hajarduari",
+    "sellerName": "Khali Ali",
+    "post_date": "21 Nov 2022"
+  }
+]

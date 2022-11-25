@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link } from "react-router-dom";
+import Products from "./Products";
 
 const Catagories = () => {
   const { data: categories, isLoading } = useQuery({
@@ -32,7 +34,11 @@ const Catagories = () => {
             <div className="card-body">
               <h2 className="card-title text-center">{category.companyName}</h2>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary w-full">Show All</button>
+                <Link to={`/category/${category.companyName}`}>
+                  <button className="btn bg-yellow-400 border-0 text-white w-full">
+                    Show All
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

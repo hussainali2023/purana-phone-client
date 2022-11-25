@@ -8,7 +8,7 @@ const banner = () => {
           <h2 className=" text-xl md:text-5xl text-white font-semibold">
             Lowest Prices on
           </h2>
-          <h1 className=" text-2xl md:text-6xl font-bold text-blue-600">
+          <h1 className=" text-2xl md:text-6xl font-bold text-yellow-300">
             Your Favorite Phones
           </h1>
           <div className=" text-white md:mt-4 md:font-medium">
