@@ -53,7 +53,6 @@ const Navbar = () => {
         <div className="relative flex items-center justify-between">
           <label
             htmlFor="dashboard-drawer"
-            tabIndex={2}
             className="btn text-white btn-ghost lg:hidden"
           >
             <svg
@@ -109,31 +108,13 @@ const Navbar = () => {
                 <div className="p-5 bg-blue-500 rounded">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <a
-                        href="/"
-                        aria-label="Company"
-                        title="Company"
-                        className="inline-flex items-center"
-                      >
-                        <svg
-                          className="w-8 text-deep-purple-accent-400"
-                          viewBox="0 0 24 24"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeMiterlimit="10"
-                          stroke="currentColor"
-                          fill="none"
-                        >
-                          <rect x="3" y="1" width="7" height="12" />
-                          <rect x="3" y="17" width="7" height="6" />
-                          <rect x="14" y="1" width="7" height="6" />
-                          <rect x="14" y="11" width="7" height="12" />
-                        </svg>
-                        <span className="ml-2 text-xl font-bold tracking-wide text-yellow-300 uppercase">
-                          Company
-                        </span>
-                      </a>
+                      <Link to="/" className="inline-flex items-center">
+                        <div className="ml-2  text-xl font-extrabold tracking-wide text-yellow-300 uppercase">
+                          <span className=" leading-none">Purana</span>
+                          <br />
+                          <span className="leading-none">Phone</span>
+                        </div>
+                      </Link>
                     </div>
                     <div>
                       <button
