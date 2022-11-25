@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ categoryPhone }) => {
   console.log(categoryPhone);
   const { user } = useContext(AuthContext);
+
+  const date = new Date().toJSON().slice(0, 10);
+  console.log(date);
 
   const {
     register,
@@ -13,15 +17,33 @@ const BookingModal = ({ categoryPhone }) => {
   } = useForm();
 
   const handleBooking = (data) => {
-    console.log(data);
-    // const booking = {
-    //   phoneName: categoryPhone.phoneName,
-    //   data.name,
-    //   data.email,
-    //   phone,
-    //   meeting_location,
-    //   sellPrice,
-    // };
+    const booking = {
+      bookingTime: date,
+      phoneName: categoryPhone.phoneName,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      meetingLocation: data.meetingLocation,
+      sellPrice: data.sellPrice,
+    };
+    console.log(booking);
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Booking confirmed");
+        } else {
+          toast.error(data.message);
+        }
+      });
+
     // console.log(booking);
   };
   return (
@@ -78,7 +100,7 @@ const BookingModal = ({ categoryPhone }) => {
             Meeting Location:
             <input
               name="metting_location"
-              {...register("meeting_location")}
+              {...register("meetingLocation")}
               type="text"
               placeholder="Enter Location"
               className="input w-full input-bordered"
