@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
-import Products from "./Products";
+import Products from "../Products/Products";
 
 const Catagories = () => {
   const { data: categories, isLoading } = useQuery({
