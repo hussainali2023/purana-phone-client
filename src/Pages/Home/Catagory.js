@@ -18,8 +18,8 @@ const Catagories = () => {
   }
   return (
     <div className=" mt-12">
-      <h1 className=" text-center text-3xl font-bold text-blue-700">
-        Smartphone Companies
+      <h1 className=" text-center text-3xl font-bold text-blue-700 my-4">
+        Categories of Smartphone
       </h1>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-6 mx-16">
         {categories.map((category) => (
@@ -33,9 +33,9 @@ const Catagories = () => {
             </figure>
             <div className="card-body">
               <h2 className="card-title text-center">{category.companyName}</h2>
-              <div className="card-actions justify-end">
+              <div className="justify-center mt-4">
                 <Link to={`/category/${category.companyName}`}>
-                  <button className="btn bg-yellow-400 border-0 text-white w-full">
+                  <button className=" btn bg-yellow-400 border-0 text-white w-full">
                     Show All
                   </button>
                 </Link>
