@@ -18,13 +18,14 @@ const BookingModal = ({ categoryPhone }) => {
 
   const handleBooking = (data) => {
     const booking = {
-      bookingTime: date,
+      bookingDate: date,
       phoneName: categoryPhone.phoneName,
+      phonePhoto: categoryPhone.photo,
       name: data.name,
       email: data.email,
       phone: data.phone,
       meetingLocation: data.meetingLocation,
-      sellPrice: data.sellPrice,
+      sellPrice: categoryPhone.salePrice,
     };
     console.log(booking);
     fetch("http://localhost:5000/bookings", {
@@ -38,7 +39,7 @@ const BookingModal = ({ categoryPhone }) => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          toast.success("Booking confirmed");
+          toast.success("Successfully Booked");
         } else {
           toast.error(data.message);
         }
