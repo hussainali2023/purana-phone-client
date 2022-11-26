@@ -11,7 +11,7 @@ const Products = () => {
       {products.map((product) => (
         <div key={product._id} className=" my-10 grid grid-cols-2 gap-2">
           <div className=" md:ml-28">
-            <img src={product.photo} className=" h-4/5 md:h-[600px]" alt="" />
+            <img src={product.photo} className=" h-4/5 md:h-[550px]" alt="" />
             <div className=" ml-1 mt-2 border-0 md:hidden flex ">
               <button className=" text-xs px-2 py-1 rounded-md bg-yellow-700 mr-1 border-0 text-white">
                 Add to Wishlist

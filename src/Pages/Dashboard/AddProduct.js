@@ -1,10 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
+import Loading from "../Shared/Loading/Loading";
 
 const AddProduct = () => {
+  const { user } = useContext(AuthContext);
+  const date = new Date().toJSON().slice(0, 10);
   const {
     data: companies,
     isLoading,
@@ -62,8 +66,53 @@ const AddProduct = () => {
         }
       });
   };
+
+  const handleAddPhone = (data) => {
+    console.log(data);
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    fetch(`https://api.imgbb.com/1/upload?key=${imgbbKey}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          console.log(imgData);
+
+          const phone = {
+            sellerName: user.displayName,
+            email: user.email,
+            post_date: date,
+            companyName: data.companyName,
+            phoneName: data.phoneName,
+            photo: imgData.data.url,
+            originalPrice: data.originalPrice,
+            salePrice: data.salePrice,
+            location: data.location,
+            usage: data.usage,
+          };
+          console.log(phone);
+          fetch("http://localhost:5000/products", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(phone),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              toast.success("New Phone Added Successfully");
+              refetch();
+              navigate("/dashboard/my-product");
+            });
+        }
+      });
+  };
+
   if (isLoading) {
-    return <p>Loading.......</p>;
+    return <Loading></Loading>;
   }
   return (
     <div className="grid grid-cols-12  gap-10 my-10 mr-6">
@@ -139,18 +188,18 @@ const AddProduct = () => {
       </div>
 
       <div className=" col-span-8 ml-16  ">
-        <h1 className=" text-2xl font-bold text-blue-600">Add Phone</h1>
-        <form action="">
+        <h1 className=" text-2xl font-bold text-blue-600">Add A New Phone</h1>
+        <form onSubmit={handleSubmit(handleAddPhone)} action="">
           <div className=" grid grid-cols-2 gap-6 mt-6">
             <div className="form-group mb-6">
               <label
                 htmlFor="exampleInputEmail2"
                 className="form-label inline-block mb-2 text-gray-700"
               >
-                Brand Name
+                Select Brand Name
               </label>
               <br />
-              <select className="w-full py-2 ">
+              <select {...register("companyName")} className="w-full py-2 ">
                 {companies.map((company, i) => (
                   <option value={company.companyName} key={i}>
                     {company.companyName}
@@ -166,6 +215,7 @@ const AddProduct = () => {
                 Phone Name
               </label>
               <input
+                {...register("phoneName")}
                 type="text"
                 className="form-control
         block
@@ -189,10 +239,11 @@ const AddProduct = () => {
           </div>
           <div className=" grid grid-cols-2  gap-6">
             <div>
-              <p className="mb-2">Brand Logo</p>
+              <p className="mb-2">Image of Phone</p>
               <label className="block shadow ">
                 <span className="sr-only cursor-pointer">Choose File</span>
                 <input
+                  {...register("image")}
                   type="file"
                   className="block cursor-pointer text-sm text-gray-500 file:py-2 file:px-6 file:rounded file:border-1 file:border-gray-400"
                 />
@@ -206,6 +257,7 @@ const AddProduct = () => {
                 Sale Price
               </label>
               <input
+                {...register("salePrice")}
                 type="text"
                 className="form-control
         block
@@ -236,6 +288,7 @@ const AddProduct = () => {
                 Usage Years
               </label>
               <input
+                {...register("usage")}
                 type="text"
                 className="form-control
         block
@@ -264,6 +317,7 @@ const AddProduct = () => {
                 Original Price
               </label>
               <input
+                {...register("originalPrice")}
                 type="text"
                 className="form-control
         block
@@ -294,6 +348,7 @@ const AddProduct = () => {
                 Location
               </label>
               <input
+                {...register("location")}
                 type="text"
                 className="form-control
         block

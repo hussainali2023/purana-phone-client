@@ -51,7 +51,7 @@ const BookingModal = ({ categoryPhone }) => {
     <>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box relative">
+        <div className="modal-box relative text-base">
           <label
             htmlFor="booking-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
@@ -61,9 +61,9 @@ const BookingModal = ({ categoryPhone }) => {
           <h3 className="text-lg font-bold">{categoryPhone.phoneName}</h3>
           <form
             onSubmit={handleSubmit(handleBooking)}
-            className="grid grid-cols-1 gap-2 mt-4"
+            className="grid grid-cols-1 gap-1 mt-2"
           >
-            Name:
+            <p className=" text-base">Name:</p>
             <input
               type="text"
               {...register("name")}
@@ -72,7 +72,7 @@ const BookingModal = ({ categoryPhone }) => {
               value={user.displayName}
               className="input w-full input-bordered "
             />
-            Email:
+            <p className="text-base"> Email:</p>
             <input
               name="email"
               {...register("email")}
@@ -106,9 +106,8 @@ const BookingModal = ({ categoryPhone }) => {
               placeholder="Enter Location"
               className="input w-full input-bordered"
             />
-            <br />
             <input
-              className="btn btn-accent w-full"
+              className="btn btn-accent w-full mt-2"
               type="submit"
               value="Submit"
             />

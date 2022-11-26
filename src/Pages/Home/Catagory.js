@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
 import Products from "../Products/Products";
+import Loading from "../Shared/Loading/Loading";
 
 const Catagories = () => {
   const { data: categories, isLoading } = useQuery({
@@ -14,7 +15,7 @@ const Catagories = () => {
   });
   console.log(categories);
   if (isLoading) {
-    return <p>Loading.......</p>;
+    return <Loading></Loading>;
   }
   return (
     <div className=" mt-12">
