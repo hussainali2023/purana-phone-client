@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
-  const { signInUser, googleLogin } = useContext(AuthContext);
+  const { signInUser, googleLogin, user } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
@@ -21,6 +21,9 @@ const Login = () => {
   const from = location.state?.pathname || "/";
 
   if (token) {
+    navigate(from, { replace: true });
+  }
+  if (user) {
     navigate(from, { replace: true });
   }
 
