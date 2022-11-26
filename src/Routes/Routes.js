@@ -12,9 +12,9 @@ import AllSeller from "../Pages/Dashboard/AllSeller";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import MyProduct from "../Pages/Dashboard/MyProduct";
-import AddProduct from "../Pages/Dashboard/AddProduct";
 import PrivateRoute from "./PrivateRoute";
 import Blogs from "../Pages/Shared/Blogs/Blogs";
+import AddProduct from "../Pages/Dashboard/AddProduct";
 
 const router = createBrowserRouter([
   {

@@ -26,7 +26,7 @@ const Catagories = () => {
           <div key={category._id} className="card shadow-xl">
             <figure>
               <img
-                src={category.compnayLogo}
+                src={category.companyLogo}
                 alt=""
                 style={{ height: "200px" }}
               />
