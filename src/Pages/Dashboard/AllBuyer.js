@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 
 const AllBuyer = () => {
   const { data: users = [], refetch } = useQuery({
@@ -11,7 +12,19 @@ const AllBuyer = () => {
     },
   });
 
-  const handleDelete = (id) => {};
+  const handleDelete = (user) => {
+    const agree = window.confirm(`Are you want to sure to Delete ${user.name}`);
+    if (agree) {
+      fetch(`http://localhost:5000/users/${user._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          refetch();
+          toast.success(" User Deleted Successfully");
+        });
+    }
+  };
 
   console.log(users);
   return (
@@ -37,7 +50,7 @@ const AllBuyer = () => {
                 {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
                 <td>
                   <button
-                    onClick={() => handleDelete(user._id)}
+                    onClick={() => handleDelete(user)}
                     className="btn btn-xs btn-danger "
                   >
                     Delete
