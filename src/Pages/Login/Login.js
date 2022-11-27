@@ -55,7 +55,7 @@ const Login = () => {
           role: "buyer",
         };
 
-        fetch("http://localhost:5000/adduser", {
+        fetch("https://purana-phone-server.vercel.app/adduser", {
           method: "POST",
           headers: {
             "content-type": "application/json",

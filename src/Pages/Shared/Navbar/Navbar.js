@@ -116,7 +116,7 @@ const Navbar = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className="absolute top-0 left-0 w-full">
+              <div className="absolute z-50 top-0 left-0 w-full">
                 <div className="p-5 bg-blue-500 rounded">
                   <div className="flex items-center justify-between mb-4">
                     <div>

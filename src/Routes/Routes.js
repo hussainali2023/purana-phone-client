@@ -13,7 +13,7 @@ import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import MyProduct from "../Pages/Dashboard/MyProduct";
 import PrivateRoute from "./PrivateRoute";
-import Blogs from "../Pages/Shared/Blogs/Blogs";
+import Blogs from "../Pages/Blogs/Blogs";
 import AddProduct from "../Pages/Dashboard/AddProduct";
 
 const router = createBrowserRouter([
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://purana-phone-server.vercel.app/category/${params.id}`),
       },
     ],
   },

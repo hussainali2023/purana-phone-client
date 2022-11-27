@@ -53,7 +53,7 @@ const SignUp = () => {
   const saveUsersInDatabase = (name, email, role) => {
     const user = { name: name, email: email, role: role };
     console.log(user);
-    fetch("http://localhost:5000/adduser", {
+    fetch("https://purana-phone-server.vercel.app/adduser", {
       method: "POST",
       headers: {
         "content-type": "application/json",
