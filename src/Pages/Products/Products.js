@@ -5,7 +5,7 @@ import BookingModal from "./BookingModal";
 const Products = () => {
   const [categoryPhone, setCategoryPhone] = useState("null");
   const products = useLoaderData();
-  // console.log(products);
+  console.log(products);
   return (
     <div className=" text-xs md:text-lg ">
       {products.map((product) => (
@@ -23,7 +23,7 @@ const Products = () => {
                   Seller:{" "}
                   <span className=" font-bold">{product.sellerName}</span>
                 </p>
-                <p>{product.sellerVerify ? "Verified" : "not verified yet"}</p>
+                <p>{product.sellerVerify ? "Verified" : "not verified"}</p>
               </div>
             </div>
             <hr className=" w-2/3" />
@@ -31,7 +31,7 @@ const Products = () => {
             <p className=" text-sm line-through">
               Original Price: ${product.originalPrice}
             </p>
-            <p>Available: {}</p>
+            <p>Condition Type: {product.conditionType}</p>
             <p>Years of Use: {product.usage}</p>
             <p>Post Date: {product.post_date}</p>
             <div className=" border-0 mt-2 md:mt-24 ">

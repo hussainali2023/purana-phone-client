@@ -52,6 +52,7 @@ const AddProduct = () => {
             sellerName: user.displayName,
             email: user.email,
             post_date: date,
+            conditionType: data.conditionType,
             companyName: data.companyName,
             phoneName: data.phoneName,
             photo: imgData.data.url,
@@ -241,7 +242,7 @@ const AddProduct = () => {
               />
             </div>{" "}
           </div>
-          <div className="">
+          <div className="grid grid-cols-2 gap-6">
             <div className="form-group mb-6">
               <label
                 htmlFor="exampleInputEmail2"
@@ -270,6 +271,23 @@ const AddProduct = () => {
                 id="exampleInputEmail2"
                 placeholder="Enter Location"
               />
+            </div>{" "}
+            <div className="form-group mb-6">
+              <label
+                htmlFor="exampleInputEmail2"
+                className="form-label inline-block mb-2 text-gray-700"
+              >
+                Condition Type
+              </label>
+              <br />
+              <select
+                {...register("conditionType")}
+                className="w-full py-2 border-2 "
+              >
+                <option value="excellent">excellent</option>
+                <option value="good">good</option>
+                <option value="fair">fair</option>
+              </select>
             </div>{" "}
           </div>
           <input
