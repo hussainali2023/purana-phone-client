@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import logo from "../../../assests/logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,11 +84,7 @@ const Navbar = () => {
             </svg>
           </label>
           <Link to="/" className="inline-flex items-center">
-            <div className="ml-2  text-xl font-extrabold tracking-wide text-yellow-300 uppercase">
-              <span className=" leading-none">Purana</span>
-              <br />
-              <span className="leading-none">Phone</span>
-            </div>
+            <img src={logo} alt="" className=" h-10" />
           </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex text-white font-medium">
             {listItems}
@@ -121,11 +118,7 @@ const Navbar = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <Link to="/" className="inline-flex items-center">
-                        <div className="ml-2  text-xl font-extrabold tracking-wide text-yellow-300 uppercase">
-                          <span className=" leading-none">Purana</span>
-                          <br />
-                          <span className="leading-none">Phone</span>
-                        </div>
+                        <img src={logo} alt="" className=" h-10" />
                       </Link>
                     </div>
                     <div>

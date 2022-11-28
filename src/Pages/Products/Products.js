@@ -5,7 +5,7 @@ import BookingModal from "./BookingModal";
 const Products = () => {
   const [categoryPhone, setCategoryPhone] = useState("null");
   const products = useLoaderData();
-  console.log(products);
+  // console.log(products);
   return (
     <div className=" text-xs md:text-lg ">
       {products.map((product) => (
@@ -38,7 +38,7 @@ const Products = () => {
               <label
                 htmlFor="booking-modal"
                 onClick={() => setCategoryPhone(product)}
-                className=" md:btn md:bg-yellow-500  bg-yellow-500 text-[10px] md:text-base p-2 md:text-white text-white md:mr-4 mr-2 rounded-2xl md:border-0"
+                className=" md:btn md:bg-yellow-500 cursor-pointer  bg-yellow-500 text-[10px] md:text-base p-2 md:text-white text-white md:mr-4 mr-2 rounded-2xl md:border-0"
               >
                 Book Now
               </label>

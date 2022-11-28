@@ -22,12 +22,12 @@ const SignUp = () => {
 
   const handleSignup = (data) => {
     // console.log(data);
-    console.log(data.email, data.password, data.role);
+    // console.log(data.email, data.password, data.role);
     createUser(data.email, data.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         const userInfo = {
           displayName: data.name,
         };
@@ -52,7 +52,7 @@ const SignUp = () => {
 
   const saveUsersInDatabase = (name, email, role) => {
     const user = { name: name, email: email, role: role };
-    console.log(user);
+    // console.log(user);
     fetch("https://purana-phone-server.vercel.app/adduser", {
       method: "POST",
       headers: {

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import Loading from "../Shared/Loading/Loading";
@@ -20,6 +21,22 @@ const MyProduct = () => {
       return data;
     },
   });
+
+  const handleDelete = (product) => {
+    const agree = window.confirm(
+      `Are you want to sure to Delete ${product.phoneName}`
+    );
+    if (agree) {
+      fetch(`https://purana-phone-server.vercel.app/products/${product._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          refetch();
+          toast.success(" Product Deleted Successfully");
+        });
+    }
+  };
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -55,7 +72,12 @@ const MyProduct = () => {
                     <button>Advertise</button>
                   </td>
                   <td>
-                    <button>Delete</button>
+                    <button
+                      onClick={() => handleDelete(product)}
+                      className=" btn border-0 bg-yellow-500 text-white"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

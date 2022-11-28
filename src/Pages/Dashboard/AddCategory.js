@@ -30,7 +30,7 @@ const AddCategory = () => {
   } = useForm();
 
   const handleAddCategory = (data) => {
-    console.log(data);
+    // console.log(data);
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -41,13 +41,13 @@ const AddCategory = () => {
       .then((res) => res.json())
       .then((imgData) => {
         if (imgData.success) {
-          console.log(imgData);
+          // console.log(imgData);
 
           const category = {
             companyName: data.companyName,
             companyLogo: imgData.data.url,
           };
-          console.log(category);
+          // console.log(category);
           fetch("https://purana-phone-server.vercel.app/category", {
             method: "POST",
             headers: {

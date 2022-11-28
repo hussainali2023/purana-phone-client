@@ -35,7 +35,7 @@ const AddProduct = () => {
   const navigate = useNavigate();
 
   const handleAddPhone = (data) => {
-    console.log(data);
+    // console.log(data);
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -46,7 +46,7 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((imgData) => {
         if (imgData.success) {
-          console.log(imgData);
+          // console.log(imgData);
 
           const phone = {
             sellerName: user.displayName,
@@ -60,7 +60,7 @@ const AddProduct = () => {
             location: data.location,
             usage: data.usage,
           };
-          console.log(phone);
+          // console.log(phone);
           fetch("https://purana-phone-server.vercel.app/products", {
             method: "POST",
             headers: {

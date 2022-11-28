@@ -9,7 +9,7 @@ import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
   return (
@@ -26,7 +26,7 @@ const DashboardLayout = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-40 md:w-80 bg-blue-500 text-white md:text-black md:bg-gray-100 text-base-content">
+          <ul className="menu p-4 w-40 md:w-80 bg-blue-500 text-white md:text-black md:bg-gray-100">
             <li>
               <Link to="/dashboard/my-orders">My Orders</Link>
             </li>

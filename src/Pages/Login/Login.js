@@ -32,13 +32,14 @@ const Login = () => {
     signInUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         setLoginUserEmail(data.email);
         toast.success("Successfully Login");
       })
       .catch((error) => {
         console.log(error.message);
         setLoginError(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -48,7 +49,7 @@ const Login = () => {
     googleLogin(provider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         const userData = {
           name: user.displayName,
           email: user.email,
@@ -64,13 +65,14 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
           });
         toast.success("Successfully Login");
       })
       .catch((error) => {
         console.log(error.message);
         setLoginError(error.message);
+        toast.error(error.message);
       });
   };
 

@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ categoryPhone }) => {
-  console.log(categoryPhone);
+  // console.log(categoryPhone);
   const { user } = useContext(AuthContext);
 
   const date = new Date().toJSON().slice(0, 10);
-  console.log(date);
+  // console.log(date);
   const navigate = useNavigate();
 
   const {
@@ -29,7 +29,7 @@ const BookingModal = ({ categoryPhone }) => {
       meetingLocation: data.meetingLocation,
       sellPrice: categoryPhone.salePrice,
     };
-    console.log(booking);
+    // console.log(booking);
     fetch("https://purana-phone-server.vercel.app/bookings", {
       method: "POST",
       headers: {
@@ -39,7 +39,7 @@ const BookingModal = ({ categoryPhone }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.acknowledged) {
           toast.success("Successfully Booked");
           navigate("/dashboard/my-orders");

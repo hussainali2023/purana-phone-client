@@ -27,7 +27,7 @@ const AllSeller = () => {
     }
   };
 
-  console.log(users);
+  // console.log(users);
   return (
     <div className="mt-6">
       <h2 className="text-3xl mb-4">All Sellers</h2>
