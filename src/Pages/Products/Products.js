@@ -11,19 +11,7 @@ const Products = () => {
       {products.map((product) => (
         <div key={product._id} className=" my-10 grid grid-cols-2 gap-2">
           <div className=" md:ml-28">
-            <img src={product.photo} className=" h-4/5 md:h-[550px]" alt="" />
-            <div className=" ml-1 mt-2 border-0 md:hidden flex ">
-              <button className=" text-xs px-2 py-1 rounded-md bg-yellow-700 mr-1 border-0 text-white">
-                Add to Wishlist
-              </button>
-              <label
-                htmlFor="booking-modal"
-                onClick={() => setCategoryPhone(product)}
-                className="text-xs px-2 py-1 rounded-md bg-yellow-500 text-white border-0"
-              >
-                Book Now
-              </label>
-            </div>
+            <img src={product.photo} className=" h-5/6  md:h-[550px]" alt="" />
           </div>
           <div className=" md:mt-16">
             <div>
@@ -39,23 +27,23 @@ const Products = () => {
               </div>
             </div>
             <hr className=" w-2/3" />
-            <p className=" text-2xl mt-6">${product.salePrice}</p>
-            <p className=" text-base line-through">
+            <p className=" text-xl md:text-2xl md:mt-6">${product.salePrice}</p>
+            <p className=" text-sm line-through">
               Original Price: ${product.originalPrice}
             </p>
             <p>Available: {}</p>
             <p>Years of Use: {product.usage}</p>
             <p>Post Date: {product.post_date}</p>
-            <div className=" border-0 mt-24 invisible md:visible  ">
+            <div className=" border-0 mt-2 md:mt-24 ">
               <label
                 htmlFor="booking-modal"
                 onClick={() => setCategoryPhone(product)}
-                className=" btn bg-yellow-500 text-white mr-4 border-0"
+                className=" md:btn md:bg-yellow-500  bg-yellow-500 text-[10px] md:text-base p-2 md:text-white text-white md:mr-4 mr-2 rounded-2xl md:border-0"
               >
                 Book Now
               </label>
-              <button className=" btn bg-yellow-700 border-0 text-white">
-                Add to Wishlist
+              <button className="md:btn md:bg-yellow-700 bg-yellow-700 text-[10px] md:text-base p-2 md:text-white text-white md:mr-4 rounded-2xl md:border-0">
+                Wishlist
               </button>
             </div>
           </div>

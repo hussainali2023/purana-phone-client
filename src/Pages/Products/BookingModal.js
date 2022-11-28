@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ categoryPhone }) => {
@@ -9,6 +10,7 @@ const BookingModal = ({ categoryPhone }) => {
 
   const date = new Date().toJSON().slice(0, 10);
   console.log(date);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -40,6 +42,7 @@ const BookingModal = ({ categoryPhone }) => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Successfully Booked");
+          navigate("/dashboard/my-orders");
         } else {
           toast.error(data.message);
         }

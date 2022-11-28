@@ -21,7 +21,7 @@ const Catagories = () => {
   return (
     <div className=" mt-12">
       <h1 className=" text-center text-xl md:text-3xl font-bold text-blue-700 my-4">
-        Categories of Smartphone
+        Brand of Smartphone
       </h1>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-6 mx-6 md:mx-16">
         {categories.map((category) => (
