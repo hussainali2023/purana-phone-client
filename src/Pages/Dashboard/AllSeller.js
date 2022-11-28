@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 
 const AllSeller = () => {
   const { data: users = [], refetch } = useQuery({
@@ -12,6 +13,20 @@ const AllSeller = () => {
       return data;
     },
   });
+  const handleDelete = (user) => {
+    const agree = window.confirm(`Are you want to sure to Delete ${user.name}`);
+    if (agree) {
+      fetch(`https://purana-phone-server.vercel.app/users/${user._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          refetch();
+          toast.success(" User Deleted Successfully");
+        });
+    }
+  };
+
   console.log(users);
   return (
     <div className="mt-6">
@@ -35,7 +50,12 @@ const AllSeller = () => {
                 <td>{user.email}</td>
                 {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
                 <td>
-                  <button className="btn btn-xs btn-danger">Delete</button>
+                  <button
+                    onClick={() => handleDelete(user)}
+                    className="btn btn-xs btn-danger"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

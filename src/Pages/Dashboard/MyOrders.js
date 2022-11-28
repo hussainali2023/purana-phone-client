@@ -49,9 +49,7 @@ const MyOrders = () => {
                   <td>{booking.bookingDate}</td>
                   <td>
                     {booking.sellPrice && !booking.paid && (
-                      <Link to={`/dashboard/payment/${booking._id}`}>
-                        <button className="btn btn-primary btn-sm">Pay</button>
-                      </Link>
+                      <button className="btn btn-primary btn-sm">Pay</button>
                     )}
                     {booking.price && booking.paid && (
                       <span className="text-green-500">Paid</span>
