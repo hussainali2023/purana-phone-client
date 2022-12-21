@@ -22,8 +22,8 @@ const MyOrders = () => {
   });
 
   return (
-    <div className=" mt-6">
-      <h3 className="text-3xl mb-5">My Orders</h3>
+    <div className=" mt-6 ml-2">
+      <h3 className=" text-xl md:text-3xl mb-5">My Orders</h3>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -42,7 +42,11 @@ const MyOrders = () => {
                 <tr key={booking._id}>
                   <th>{i + 1}</th>
                   <td>
-                    <img src={booking.phonePhoto} className="h-20" alt="" />
+                    <img
+                      src={booking.phonePhoto}
+                      className=" h-12 md:h-20"
+                      alt=""
+                    />
                   </td>
                   <td>{booking.phoneName}</td>
                   <td>{booking.sellPrice}</td>
